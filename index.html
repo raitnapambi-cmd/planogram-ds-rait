@@ -106,7 +106,7 @@ input,select,textarea{font-size:16px!important}
 .support-install-strip a:focus-visible{outline:2px solid #0755c9;outline-offset:2px}
 @media(max-width:370px){.support-install-strip{font-size:11px;padding-top:5px;gap:5px}.support-install-strip a{padding:4px 8px}}
 
-/* Password lokal sekali + data lokal IndexedDB; scanner dan layout lama utuh. */
+/* Data planogram lokal IndexedDB; scanner dan layout lama utuh. */
 #settings{display:none!important}
 .remote-data-panel{background:#fff;border:1px solid #dbe3ee;border-radius:15px;padding:13px;margin-bottom:12px;box-shadow:0 3px 12px #102c5110}
 .remote-data-header{display:flex;align-items:center;justify-content:space-between;gap:8px}
@@ -116,48 +116,62 @@ input,select,textarea{font-size:16px!important}
 .remote-data-btn{width:100%;border:1px solid #0755c9;background:#0755c9;color:white;font-weight:850;padding:12px;border-radius:10px}
 .remote-data-btn:disabled{background:#dfe7f0;color:#6f8198;border-color:#dfe7f0}
 .remote-data-progress{font-size:.75rem;color:#0e6946;margin-top:6px;min-height:1.1em}
-.activation-gate{position:fixed;inset:0;z-index:90;display:flex;align-items:center;justify-content:center;overflow:auto;background:#edf3fa;padding:22px 15px;overscroll-behavior:contain}
-.activation-gate[hidden]{display:none!important}
-.activation-card{width:min(430px,100%);border:1px solid #d6e2f2;border-radius:19px;background:white;padding:22px;box-shadow:0 8px 35px #0a377722}
-.activation-card .activation-eyebrow{color:#0755c9;font-weight:950;font-size:.76rem}
-.activation-card h2{font-size:1.4rem;margin:9px 0 4px;color:#0b2f66}
-.activation-card .activation-credit{font-size:1.45rem;font-weight:1000;color:#0755c9;margin-bottom:17px}
-.activation-card p{font-size:.86rem;color:#5b6d83}
-.activation-card input{width:100%;font-size:16px!important;text-align:center;letter-spacing:.08em;text-transform:uppercase;padding:14px;border:1px solid #b9cbe1;border-radius:11px}
-.activation-card .activate-button{width:100%;background:#0755c9;color:#fff;border:0;padding:13px;border-radius:11px;margin-top:11px;font-weight:900}
-.activation-card .activate-button:disabled{opacity:.45}
-.activation-card .activation-status{font-size:.78rem;margin:11px 0;color:#516278;min-height:2em}
-.activation-card .activation-whatsapp{display:block;text-align:center;font-size:.83rem;font-weight:800;padding:10px;color:#087846;background:#eef9f2;border-radius:10px;text-decoration:none}
-.activation-card .activation-retry{font-size:.76rem;color:#0755c9;background:none;border:none;margin-top:11px;text-decoration:underline}
-@media(max-width:370px){.activation-card{padding:18px}.activation-card h2{font-size:1.22rem}}
+/* Revisi: data di header, bantuan dekat Senter, bukan panel besar di halaman. */
+.header-cloud{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-width:76px;position:relative;white-space:nowrap;min-height:38px;-webkit-tap-highlight-color:transparent}
+.header-cloud svg{flex:0 0 auto}
+.header-cloud .cloud-status-dot{position:absolute;right:4px;top:3px;width:7px;height:7px;background:#ffce4f;border:1px solid #fff7;border-radius:50%}
+.header-cloud .cloud-status-dot.ready{background:#28e399}
+.data-modal[hidden]{display:none!important}
+.data-modal{position:fixed;inset:0;z-index:75;display:grid;align-items:center;justify-items:center;padding:18px;isolation:isolate}
+.data-modal-backdrop{position:absolute;inset:0;background:#0b1c38b3;z-index:-1}
+.data-modal-box{background:#fff;color:#17233b;border-radius:19px;width:min(440px,100%);max-height:min(88dvh,740px);overflow:auto;padding:18px;box-shadow:0 14px 48px #001d4960}
+.data-modal-top{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:1.02rem;color:#083675}
+.data-modal-top button{border:0;border-radius:9px;padding:8px 12px;background:#eef3fb;color:#385476;font-size:1rem}
+.data-modal-help{font-size:.79rem;color:#63748c;margin:8px 0 12px}
+.data-modal .remote-data-panel{margin:0;border-radius:12px;box-shadow:none;padding:12px;border:1px solid #e3eaf4;background:#f8faff}
+.data-modal .remote-data-header strong{font-size:.82rem}
+.data-modal .remote-data-btn{min-height:48px}
+.data-modal-done{margin-top:11px;background:#e7f0ff;border:1px solid #a9c7ef;border-radius:10px;width:100%;min-height:43px;font-weight:850;color:#08418c}
+.data-modal-done:disabled{opacity:.5}
+.scanner-status-group{display:flex;flex-direction:column;align-items:flex-start;gap:3px;min-width:0;flex:1}
+.scanner-wa-support{font-size:11px;color:#0b7951;font-weight:800;text-decoration:none;line-height:1.3}
+.scanner-wa-support:active,.scanner-wa-support:focus-visible{text-decoration:underline}
+.retail-scanner-controls #scanTorchBtn{flex:0 0 auto}
+@media(max-width:350px){.scanner-wa-support{font-size:10px}.header-cloud{min-width:65px}}
+
+/* Data unduhan disembunyikan di popup, scanner tetap area pertama layar. */
+.data-modal-support{margin:14px 0 4px;padding-top:12px;border-top:1px solid #dfe7f3;display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;color:#596d83;font-size:12px;line-height:1.45}
+.data-modal-support strong{color:#0c366f}
+.data-modal-support a{display:inline-flex;align-items:center;justify-content:center;padding:9px 14px;min-height:39px;border:1px solid #a6dbb8;background:#eaf8ef;color:#0b733f;border-radius:10px;font-weight:900;text-decoration:none}
+.data-modal-support a:focus-visible,.scanner-wa-support:focus-visible{outline:2px solid #0755c9;outline-offset:3px}
+/* Header cloud adalah satu-satunya kontrol data di halaman utama. */
+#remoteDataPanel{scroll-margin-top:12px}
 </style></head><body>
-<div id="activationGate" class="activation-gate" aria-label="Aktivasi aplikasi">
- <div class="activation-card">
-  <div class="activation-eyebrow">AKTIVASI PERTAMA</div>
-  <h2>Planogram DS Kebon Kacang</h2>
-  <div class="activation-credit">by Raitttt</div>
-  <p id="activationIntro">Masukkan password sekali di browser ini untuk mulai menggunakan aplikasi.</p>
-  <div id="activationForm" hidden>
-   <label for="activationCode" class="label">Password akses aplikasi</label>
-   <input id="activationCode" type="password" maxlength="32" autocomplete="off" placeholder="Masukkan password" aria-label="Password akses">
-   <button id="activateBtn" class="activate-button" type="button">Buka aplikasi</button>
-  </div>
-  <div id="activationStatus" class="activation-status" role="status" aria-live="polite">Masukkan password akses yang diberikan pembuat aplikasi.</div>
-  <a class="activation-whatsapp" target="_blank" rel="noopener noreferrer" href="https://wa.me/62816665264?text=Halo%20Raitttt%2C%20saya%20mau%20minta%20password%20akses%20Planogram%20DS.">Minta password via WhatsApp</a>
- </div>
-</div>
 <div id="launchSplash" aria-hidden="true"><div><strong>Planogram DS Kebon Kacang</strong><span>by Raitttt</span></div></div>
-<header><div class="topline"><div><div class="brand">▥ Planogram DS by rait</div></div><button class="menu" id="settingsBtn">▤ Data</button></div></header>
-<div class="support-install-strip" aria-label="Bantuan setup dan pemasangan aplikasi"><span>Butuh setup atau pemasangan? Hubungi <strong>@Raitttt</strong></span><a href="https://wa.me/62816665264?text=Halo%20Raitttt%2C%20saya%20butuh%20bantuan%20setup%20atau%20pemasangan%20aplikasi%20Planogram%20DS%20Kebon%20Kacang." target="_blank" rel="noopener noreferrer" aria-label="Chat WhatsApp Raitttt untuk bantuan setup">Chat WhatsApp ↗</a></div>
-<main>
-<section id="remoteDataPanel" class="remote-data-panel" aria-label="Data planogram">
+<header><div class="topline"><div><div class="brand">▥ Planogram DS by rait</div></div><button class="menu header-cloud" id="settingsBtn" type="button" aria-label="Kelola data planogram" title="Download / perbarui data planogram"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M7 18H6a4 4 0 0 1-.7-7.94A6.6 6.6 0 0 1 18 8.5a4.8 4.8 0 0 1 1 9.5h-2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 12v8m0 0-3-3m3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Data</span><i class="cloud-status-dot" id="cloudStatusDot" aria-hidden="true"></i></button></div></header>
+
+<div class="data-modal" id="dataModal" hidden role="dialog" aria-modal="true" aria-label="Kelola data planogram">
+  <div class="data-modal-backdrop" id="dataModalBackdrop"></div>
+  <div class="data-modal-box">
+    <div class="data-modal-top"><strong>☁ Data Planogram</strong><button type="button" id="closeDataModal" aria-label="Tutup jendela data">✕</button></div>
+    <p class="data-modal-help" id="dataModalHelp">Unduh sekali untuk memakai pencarian dan scanner dengan data lokal HP.</p>
+    <section id="remoteDataPanel" class="remote-data-panel" aria-label="Data planogram">
   <div class="remote-data-header"><strong>Data Planogram</strong><span id="remoteDataState" class="remote-data-state">Siap diunduh</span></div>
   <p id="remoteDataInfo">Setelah masuk, unduh data planogram siap pakai satu kali. Scan selanjutnya berjalan di HP.</p>
   <button id="downloadDataBtn" class="remote-data-btn" type="button" disabled>↓ Download Data Planogram</button>
   <div id="remoteDataProgress" class="remote-data-progress" role="status" aria-live="polite"></div>
 </section>
+    <div class="data-modal-support">
+      <span>Butuh bantuan? Hubungi pembuat aplikasi <strong>@raitttt</strong></span>
+      <a href="https://wa.me/62816665264?text=Halo%20Raitttt%2C%20saya%20butuh%20bantuan%20setup%20Planogram%20DS%20Kebon%20Kacang." target="_blank" rel="noopener noreferrer" aria-label="Hubungi Raitttt di WhatsApp">Chat WhatsApp ↗</a>
+    </div>
+    <button id="dataModalDone" type="button" class="data-modal-done" disabled>Mulai scan barang</button>
+  </div>
+</div>
+<main>
+
 <section class="page" id="homePage">
-<section id="retailScanner" class="card retail-scanner" aria-label="Scanner barcode kamera"><div class="retail-scanner-head"><div class="retail-scanner-title"><span class="retail-scanner-mark">▥</span><div><strong>Scanner Barcode</strong><small id="scanEngineText">Kamera belakang</small></div></div><button id="scanPowerBtn" type="button" class="retail-scan-power" aria-pressed="false">Aktifkan kamera</button></div><div id="scanView" class="retail-scanner-view" hidden><div class="retail-scanner-camera"><video id="scanVideo" autoplay muted playsinline></video><div class="retail-scanner-shade"><div class="retail-scanner-target"><div class="retail-scanner-line"></div></div></div><div class="retail-scanner-badge" id="scanCameraBadge">Menyiapkan…</div></div><div class="retail-scanner-controls"><span id="scanStatus" role="status">Arahkan barcode ke kotak</span><button id="scanTorchBtn" type="button" disabled>☀ Senter</button></div></div><div id="scanFoot" class="retail-scanner-foot"></div></section>
+<section id="retailScanner" class="card retail-scanner" aria-label="Scanner barcode kamera"><div class="retail-scanner-head"><div class="retail-scanner-title"><span class="retail-scanner-mark">▥</span><div><strong>Scanner Barcode</strong><small id="scanEngineText">Kamera belakang</small></div></div><button id="scanPowerBtn" type="button" class="retail-scan-power" aria-pressed="false">Aktifkan kamera</button></div><div id="scanView" class="retail-scanner-view" hidden><div class="retail-scanner-camera"><video id="scanVideo" autoplay muted playsinline></video><div class="retail-scanner-shade"><div class="retail-scanner-target"><div class="retail-scanner-line"></div></div></div><div class="retail-scanner-badge" id="scanCameraBadge">Menyiapkan…</div></div><div class="retail-scanner-controls"><div class="scanner-status-group"><span id="scanStatus" role="status">Arahkan barcode ke kotak</span><a class="scanner-wa-support" href="https://wa.me/62816665264?text=Halo%20Raitttt%2C%20saya%20butuh%20bantuan%20setup%20atau%20pemasangan%20Planogram%20DS." target="_blank" rel="noopener noreferrer">Butuh setup? WA @Raitttt ↗</a></div><button id="scanTorchBtn" type="button" disabled>☀ Senter</button></div></div><div id="scanFoot" class="retail-scanner-foot"></div></section>
 <section class="card"><div class="label">Cari barang</div><div class="searchbox"><input id="searchInput" class="field" type="search" autocomplete="off" placeholder="Barcode, PLU, atau nama"><button id="searchBtn">Cari</button></div><div id="searchOptions"></div><div id="scanResult" class="result empty">Belum ada hasil.</div></section>
 <section class="card detail-only-card" id="rackCheckCard" hidden><button id="openRackBtn" class="primary" type="button">Lihat layout rak (posisi rak)</button></section>
 <section class="card map-card" id="mapCard">
