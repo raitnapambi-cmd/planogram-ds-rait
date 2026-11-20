@@ -185,7 +185,7 @@ main{max-width:680px;padding:12px 12px 95px}.card{padding:12px;border-radius:12p
 .result.switching,.result.switching .location,.result.switching .product{animation:none}
 button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #b37600;outline-offset:3px}
 @media(max-width:340px){.position-strip{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:7px}.brand{font-size:14px}.map-head{flex-wrap:wrap}}
-</style><link rel="preload" as="image" href="assets/splash-kebon-kacang.png"><link rel="stylesheet" href="assets/fonts/fonts.css"><link rel="stylesheet" href="stitch-ui.css?v=hp-v5-splash"><script src="rack-guidance.js"></script></head><body class="stitch-app">
+</style><link rel="preload" as="image" href="assets/splash-kebon-kacang.png"><link rel="stylesheet" href="assets/fonts/fonts.css"><link rel="stylesheet" href="stitch-ui.css?v=hp-v6-layout"><script src="rack-guidance.js"></script></head><body class="stitch-app">
 <div id="launchSplash" aria-hidden="true"><img id="launchSplashImage" class="splash-art" src="assets/splash-kebon-kacang.png" alt="Planogram DS Kebon Kacang" width="941" height="1672" fetchpriority="high" loading="eager"></div>
 <header class="app-header"><div class="topline"><div class="brand-lockup"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8V4h4m8 0h4v4M4 16v4h4m8 0h4v-4M7 9v6m3-7v8m4-8v8m3-7v6"/></svg><h1 class="brand">Planogram DS by raitttt</h1></div><a class="scanner-wa-support header-support" aria-label="Bantuan? @Raitttt" title="Bantuan? @Raitttt" href="https://wa.me/62816665264?text=Halo%20Raitttt%2C%20saya%20butuh%20bantuan%20setup%20atau%20pemasangan%20Planogram%20DS." target="_blank" rel="noopener noreferrer"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13v-2a8 8 0 0 1 16 0v2M4 11H2v7h4v-7Zm16 0h2v7h-4v-7Zm0 7c0 3-4 4-8 4"/></svg><span class="header-support-label">Bantuan</span></a><button class="menu header-cloud" id="settingsBtn" type="button" aria-label="Kelola data planogram" title="Unduh atau perbarui data"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18H6a4 4 0 0 1-.7-7.94A6.6 6.6 0 0 1 18 8.5a4.8 4.8 0 0 1 1 9.5h-2M12 12v8m-3-3 3 3 3-3"/></svg><i class="cloud-status-dot" id="cloudStatusDot" aria-hidden="true"></i></button></div></header>
 
@@ -258,7 +258,7 @@ function displayMatch(code,found){
   for(const loc of locationsFor(item.plu)){const key=String(loc.locationCode||'');if(seen.has(key))continue;seen.add(key);locations.push(loc)}
   current=item;selectedRack=item.rack;
   $('scanResult').className='result';
-  $('scanResult').innerHTML=`<div class="result-heading"><span class="found-label"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>BARANG DITEMUKAN</span>${locations.length>1?`<span class="location-count">${locations.length} lokasi</span>`:''}</div><h2 class="product" id="chosenProduct"></h2><div class="product-identifiers" id="chosenIdentifiers"></div>${locations.length>1?`<div class="location-switcher" role="group" aria-label="Pilih lokasi barang">${locations.map((loc,i)=>`<button type="button" class="location-choice" data-location-index="${i}" aria-pressed="false"><span>Lokasi ${i+1}: ${esc(loc.rack)}</span><small>${esc(loc.locationCode)}</small></button>`).join('')}</div>`:''}<section class="location-block" aria-label="Kode lokasi planogram"><div class="location" id="chosenLocation"></div><div class="location-floor"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8 9-5 9 5-9 5Zm0 5 9 5 9-5M3 18l9 5 9-5"/></svg><span id="chosenFloor"></span></div></section><section class="position-strip" aria-label="Detail lokasi rak"><div class="position-cell"><small>Rak</small><b id="chosenRackChip"></b></div><div class="position-cell"><small>Selving</small><b id="chosenShelfChip"></b></div><div class="position-cell"><small>Posisi</small><b id="chosenPosition"></b></div><div class="position-cell"><small>No urut</small><b id="chosenOrder"></b></div><div class="position-cell"><small>Kiri-kanan</small><b id="chosenKK"></b></div></section><section class="rack-guidance" aria-label="Petunjuk posisi rak"><h3><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-8-8 18-2-8Z"/></svg>PETUNJUK POSISI RAK</h3><p id="chosenGuidance"></p><p class="guidance-note" id="chosenGuidanceNote"></p></section>`;
+  $('scanResult').innerHTML=`<div class="result-heading"><span class="found-label"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>ITEM DITEMUKAN</span><span class="floor-badge"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8 9-5 9 5-9 5Zm0 5 9 5 9-5M3 18l9 5 9-5"/></svg><span id="chosenFloor"></span></span></div><h2 class="product" id="chosenProduct"></h2><div class="product-identifiers" id="chosenIdentifiers"></div>${locations.length>1?`<div class="location-switcher" role="group" aria-label="Pilih lokasi barang"><span class="location-count">${locations.length} lokasi</span>${locations.map((loc,i)=>`<button type="button" class="location-choice" data-location-index="${i}" aria-pressed="false"><span>Lokasi ${i+1}: ${esc(loc.rack)}</span><small>${esc(loc.locationCode)}</small></button>`).join('')}</div>`:''}<section class="location-block" aria-label="Kode lokasi planogram"><div class="location" id="chosenLocation"></div></section><section class="position-strip" aria-label="Detail lokasi rak"><div class="position-cell"><small>Rak</small><b id="chosenRackChip"></b></div><div class="position-cell"><small>Selving</small><b id="chosenShelfChip"></b></div><div class="position-cell"><small>Posisi</small><b id="chosenPosition"></b></div><div class="position-cell"><small>No urut</small><b id="chosenOrder"></b></div><div class="position-cell"><small>Kiri-kanan</small><b id="chosenKK"></b></div></section><section class="rack-guidance" aria-label="Petunjuk posisi rak"><h3><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-8-8 18-2-8Z"/></svg>PETUNJUK POSISI RAK</h3><p id="chosenGuidance"></p><p class="guidance-note" id="chosenGuidanceNote"></p></section>`;
   $('searchOptions').innerHTML='';$('rackCheckCard').hidden=false;
   document.body.classList.add('has-result');
   function chooseLocation(next){
@@ -305,7 +305,7 @@ function updateActiveResult(item){
   const p=safeMapPoint(item.rack);
   const mapped=!!p&&(p.view===0||p.view===1)&&Number.isFinite(p.x)&&Number.isFinite(p.y);
   const floor=mapped?(p.view===0?'lantai atas':'lantai bawah'):'';
-  $('chosenFloor').textContent=mapped?'Layout '+floor:'Lantai belum dipetakan';
+  $('chosenFloor').textContent=mapped?'Rak berada di '+floor:'Lantai belum dipetakan';
   const custom=window.PLANOGRAM_RACK_GUIDANCE?.[normalizeRackCode(item.rack)];
   if(!mapped){
     $('chosenGuidance').textContent='Rak tersedia pada data planogram, tetapi titiknya belum dipetakan di layout.';
@@ -359,7 +359,8 @@ function showScannerConfirmation(){
 function syncScannerStatusVisibility(){
   const status=$('scanStatus');
   const success=/^item ditemukan[.!]?$/i.test(status.textContent.trim());
-  status.hidden=success;
+  const routineHint=/^scan barcode[.!]?$/i.test(status.textContent.trim());
+  status.hidden=success||routineHint;
   if(success)showScannerConfirmation();else hideScannerConfirmation();
 }
 new MutationObserver(syncScannerStatusVisibility).observe($('scanStatus'),{childList:true,characterData:true,subtree:true});
@@ -917,7 +918,7 @@ function hideModal(){
 function afterSplash(fn){
  const splash=$('launchSplash'),animation=splash?.getAnimations?.()[0];
  if(animation?.finished)animation.finished.then(fn,fn);
- else setTimeout(fn,1400);
+ else setTimeout(fn,2300);
 }
 function connectDB(){
  return new Promise((resolve,reject)=>{
